@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -17,7 +17,10 @@ export class CheckoutComponent {
   loading = false;
   message = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private zone: NgZone   // 👈 IMPORTANT
+  ) {}
 
   submitPayment() {
     if (!this.email || !this.amount) {
@@ -33,12 +36,16 @@ export class CheckoutComponent {
       amount: this.amount
     }).subscribe({
       next: (res) => {
-        this.message = 'Payment request sent successfully';
-        this.loading = false;
+        this.zone.run(() => {          // ✅ FORCE UI UPDATE
+          this.loading = false;
+          this.message = 'Payment request sent successfully';
+        });
       },
-      error: (err) => {
-        this.message = 'Something went wrong';
-        this.loading = false;
+      error: () => {
+        this.zone.run(() => {
+          this.loading = false;
+          this.message = 'Something went wrong';
+        });
       }
     });
   }
