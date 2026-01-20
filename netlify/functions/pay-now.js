@@ -11,7 +11,7 @@ exports.handler = async (event) => {
     form.append("email", body.email);
 
     const response = await axios.post(
-      "https://visiopt.com/app/webhook_capture_custom/MTAzMy0yNTQtNTItVw==",
+      "https://visioptdev.com/app/webhook_capture_custom/MTA0MC00MjMtMTMyLVc=",
       form.toString(),
       {
         headers: {
