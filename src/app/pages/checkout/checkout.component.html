@@ -1,0 +1,15 @@
+<div class="checkout-box">
+  <h2>Checkout</h2>
+
+  <label>Email</label>
+  <input type="email" [(ngModel)]="email" placeholder="Enter email" />
+
+  <label>Amount</label>
+  <input type="number" [(ngModel)]="amount" placeholder="Enter amount" />
+
+  <button (click)="submitPayment()" [disabled]="loading">
+    {{ loading ? 'Processing...' : 'Submit' }}
+  </button>
+
+  <p class="msg">{{ message }}</p>
+</div>

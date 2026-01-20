@@ -1,0 +1,227 @@
+/* GENERAL */
+section {
+  padding: 70px 10%;
+  font-family: "Inter", sans-serif;
+}
+
+/* HERO */
+.about-hero {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.about-hero img {
+  width: 50%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.hero-text {
+  max-width: 50%;
+}
+
+.hero-text h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.hero-text p {
+  font-size: 18px;
+  color: #555;
+}
+
+/* OUR STORY */
+.our-story {
+  text-align: center;
+}
+
+.story-image {
+  margin-top: 30px;
+  width: 100%;
+  border-radius: 12px;
+  max-height: 420px;
+  object-fit: cover;
+}
+
+/* MISSION & VISION */
+.mission-vision {
+  display: flex;
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.mission-card {
+  flex: 1;
+  background: #eef3ff;
+  padding: 25px;
+  border-radius: 12px;
+}
+
+.mission-card h3 {
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+/* VALUES SECTION */
+.values-section {
+  text-align: center;
+}
+
+.values-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.value-card {
+  padding: 25px;
+  background: #f9f9ff;
+  border-radius: 12px;
+}
+
+.value-card h4 {
+  margin-bottom: 10px;
+}
+
+/* TIMELINE */
+.timeline {
+  margin-top: 40px;
+  border-left: 3px solid #0057ff;
+  padding-left: 25px;
+}
+
+.timeline-item {
+  margin-bottom: 25px;
+}
+
+.timeline-item span {
+  font-size: 20px;
+  font-weight: 600;
+  color: #0057ff;
+}
+
+/* STATS */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  text-align: center;
+}
+
+.stat-box {
+  padding: 25px;
+  background: #f6f8ff;
+  border-radius: 12px;
+}
+
+.stat-box h3 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: #0057ff;
+}
+
+/* LEADERSHIP TEAM */
+.leadership-section {
+  text-align: center;
+}
+
+.leadership-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.leader-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.leader-card h4 {
+  margin-top: 12px;
+  font-size: 20px;
+}
+
+/* FAQ */
+.about-faq {
+  text-align: center;
+}
+
+.faq-container {
+  max-width: 900px;
+  margin: auto;
+  text-align: left;
+  margin-top: 30px;
+}
+
+.faq-item {
+  padding: 20px 0;
+  border-bottom: 1px solid #e4e4e4;
+}
+
+.faq-item h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* FINAL CTA */
+.about-final-cta {
+  text-align: center;
+  background: #eef3ff;
+  padding: 60px 10%;
+  border-radius: 12px;
+  margin-top: 60px;
+}
+
+.btn-primary {
+  background: #0057ff;
+  color: white;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-primary:hover {
+  background: #0047d4;
+}
+
+/* RESPONSIVE LAYOUT */
+@media (max-width: 992px) {
+  .about-hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text,
+  .about-hero img {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .mission-vision,
+  .values-grid,
+  .stats-grid,
+  .leadership-grid {
+    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+  }
+}
+
+@media (max-width: 600px) {
+  .mission-vision,
+  .values-grid,
+  .stats-grid,
+  .leadership-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-hero img {
+    height: 300px;
+  }
+}

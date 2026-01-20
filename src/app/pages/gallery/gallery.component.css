@@ -1,0 +1,206 @@
+/* GENERAL */
+section {
+  padding: 70px 10%;
+  font-family: "Inter", sans-serif;
+}
+
+/* HERO */
+.gallery-hero {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.gallery-hero img {
+  width: 50%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.gallery-hero-text {
+  max-width: 50%;
+}
+
+.gallery-hero-text h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+/* INTRO */
+.gallery-intro {
+  text-align: center;
+}
+
+/* FILTERS */
+.gallery-filters {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.gallery-filters span {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.gallery-filters .active {
+  background: #0057ff;
+  color: white;
+  border-color: #0057ff;
+}
+
+/* GRID */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.gallery-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  transition: 0.4s ease;
+}
+
+.gallery-card:hover img {
+  transform: scale(1.08);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  color: white;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s ease;
+  text-align: center;
+  padding: 20px;
+}
+
+.gallery-card:hover .overlay {
+  opacity: 1;
+}
+
+/* FEATURED PROJECT */
+.featured-project {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  background: #eef3ff;
+  border-radius: 12px;
+}
+
+.featured-project img {
+  width: 50%;
+  border-radius: 12px;
+}
+
+.featured-text ul {
+  margin: 15px 0;
+}
+
+/* PROCESS */
+.gallery-process {
+  text-align: center;
+}
+
+.process-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.process-card {
+  padding: 25px;
+  background: #f7f9ff;
+  border-radius: 12px;
+}
+
+/* TESTIMONIALS */
+.gallery-testimonials {
+  text-align: center;
+}
+
+.testimonial-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.testimonial-card {
+  padding: 25px;
+  background: #f7f9ff;
+  border-radius: 12px;
+  font-style: italic;
+}
+
+/* FINAL CTA */
+.gallery-final-cta {
+  text-align: center;
+  background: #eef3ff;
+  padding: 70px 10%;
+  border-radius: 12px;
+}
+
+.btn-primary {
+  background: #0057ff;
+  color: white;
+  padding: 14px 26px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: #0047d4;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .gallery-hero,
+  .featured-project {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .gallery-hero img,
+  .featured-project img {
+    width: 100%;
+  }
+
+  .gallery-grid,
+  .testimonial-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery-grid,
+  .testimonial-grid,
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-card img {
+    height: 200px;
+  }
+}

@@ -1,0 +1,262 @@
+/* GENERAL */
+section {
+  padding: 70px 10%;
+  font-family: "Inter", sans-serif;
+}
+
+/* HERO SECTION */
+.services-hero {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.services-hero img {
+  width: 50%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.hero-content {
+  max-width: 50%;
+}
+
+.hero-content h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+/* OVERVIEW SECTION */
+.service-overview {
+  text-align: center;
+}
+
+.service-cards {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.service-card {
+  padding: 25px;
+  background: #f7f9ff;
+  border-radius: 12px;
+  transition: 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: #0057ff;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+/* DETAILED SERVICES */
+.detailed-services {
+  margin-top: 60px;
+}
+
+.service-details-block {
+  background: #eef3ff;
+  padding: 35px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+}
+
+.service-details-block h3 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+/* WORKFLOW */
+.workflow-section {
+  text-align: center;
+}
+
+.workflow-steps {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+}
+
+.workflow-step {
+  padding: 20px;
+  background: #f9f9ff;
+  border-radius: 12px;
+}
+
+.workflow-step span {
+  font-size: 26px;
+  color: #0057ff;
+  font-weight: 700;
+}
+
+/* TECH STACK */
+.tech-stack {
+  text-align: center;
+}
+
+.tech-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+}
+
+.tech-grid span {
+  background: #eef3ff;
+  padding: 18px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* CASE STUDIES */
+.case-studies {
+  text-align: center;
+}
+
+.case-cards {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.case-card {
+  padding: 25px;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  transition: 0.3s ease;
+}
+
+.case-card:hover {
+  transform: translateY(-5px);
+}
+
+.case-card img {
+  width: 100%;
+  height: 180px;
+  border-radius: 12px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+/* TESTIMONIALS */
+.services-testimonials {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.testimonial-row {
+  margin-top: 40px;
+  display: flex;
+  gap: 25px;
+}
+
+.testimonial-box {
+  flex: 1;
+  padding: 25px;
+  background: #f7f9ff;
+  border-radius: 12px;
+  font-style: italic;
+}
+
+/* FAQ */
+.services-faq {
+  margin-top: 60px;
+}
+
+.faq-list {
+  max-width: 900px;
+  margin: auto;
+}
+
+.faq-item {
+  padding: 20px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.faq-item h4 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* FINAL CTA */
+.services-final-cta {
+  text-align: center;
+  background: #eef3ff;
+  padding: 60px 10%;
+  border-radius: 12px;
+}
+
+.btn-primary {
+  background: #0057ff;
+  color: white;
+  padding: 14px 26px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-primary:hover {
+  background: #0047d4;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .services-hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .service-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .workflow-steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .tech-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .case-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .service-cards,
+  .workflow-steps,
+  .tech-grid,
+  .case-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .services-hero img {
+    width: 100%;
+  }
+}

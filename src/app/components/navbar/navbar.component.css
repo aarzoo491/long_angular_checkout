@@ -1,0 +1,70 @@
+/* NAVBAR BASE */
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 15px 5%; /* Reduced padding to prevent overflow */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #e2e2e2;
+  z-index: 999;
+  overflow-x: hidden; /* PREVENT HORIZONTAL SCROLL */
+  box-sizing: border-box;
+}
+
+/* LOGO */
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0057ff;
+  white-space: nowrap; /* Prevent logo from stretching */
+}
+
+/* NAV LINKS */
+.nav-links {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap; /* Allow items to wrap instead of overflow */
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  position: relative;
+  padding-bottom: 4px;
+  transition: 0.3s ease;
+  white-space: nowrap; /* Prevent text overflow */
+}
+
+/* Hover underline */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 2px;
+  background: #0057ff;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+/* RESPONSIVE FIX */
+@media (max-width: 700px) {
+  .nav-links {
+    gap: 15px;
+  }
+
+  .navbar {
+    padding: 12px 20px;
+  }
+}
