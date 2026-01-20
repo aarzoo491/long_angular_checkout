@@ -22,31 +22,31 @@ export class CheckoutComponent {
     private zone: NgZone   // 👈 IMPORTANT
   ) {}
 
-  submitPayment() {
+  submitPayment(btn: HTMLButtonElement) {
     if (!this.email || !this.amount) {
-      this.message = 'Please enter email and amount';
-      return;
+        this.message = 'Please enter email and amount';
+        return;
     }
 
     this.loading = true;
     this.message = '';
 
     this.http.post<any>('/.netlify/functions/pay-now', {
-      email: this.email,
-      amount: this.amount
+        email: this.email,
+        amount: this.amount
     }).subscribe({
-      next: (res) => {
-        this.zone.run(() => {          // ✅ FORCE UI UPDATE
-          this.loading = false;
-          this.message = 'Payment request sent successfully';
-        });
-      },
-      error: () => {
-        this.zone.run(() => {
-          this.loading = false;
-          this.message = 'Something went wrong';
-        });
-      }
+        next: (res) => {
+        // ✅ FORCE UI RESET (PROD SAFE)
+        this.loading = false;
+        btn.disabled = false;
+        this.message = 'Payment request sent successfully';
+        },
+        error: () => {
+        this.loading = false;
+        btn.disabled = false;
+        this.message = 'Something went wrong';
+        }
     });
-  }
+    }
+
 }
