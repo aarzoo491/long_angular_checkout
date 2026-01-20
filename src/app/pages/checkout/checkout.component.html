@@ -7,9 +7,13 @@
   <label>Amount</label>
   <input type="number" [(ngModel)]="amount" placeholder="Enter amount" />
 
-  <button (click)="submitPayment()" [disabled]="loading">
+  <button
+    #submitBtn
+    (click)="submitPayment(submitBtn)"
+    [disabled]="loading"
+    >
     {{ loading ? 'Processing...' : 'Submit' }}
-  </button>
+    </button>
 
-  <p class="msg">{{ message }}</p>
+    <p class="msg">{{ message }}</p>
 </div>
