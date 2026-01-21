@@ -1,4 +1,4 @@
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, ApplicationRef } from '@angular/core';
 import { provideRouter, Router, NavigationEnd } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { routes } from './app.routes';
@@ -9,32 +9,37 @@ export const appConfig: ApplicationConfig = {
 
     {
       provide: 'VISIOPT_ROUTER_HOOK',
-      useFactory: (router: Router) => {
+      useFactory: (router: Router, appRef: ApplicationRef) => {
         return () => {
 
-          // ---- RUN ON FIRST PAGE LOAD ----
-          setTimeout(() => {
-            if ((window as any).VisioptSPA) {
-              console.log("SPA First Load Trigger");
-              (window as any).VisioptSPA.run();
+          // Run on first load
+          appRef.isStable.subscribe(stable => {
+            if (stable) {
+              setTimeout(() => {
+                console.log("SPA First Load - DOM Ready");
+                (window as any).VisioptSPA?.run();
+              }, 100);
             }
-          }, 300); // give global.js time to fully load
+          });
 
-          // ---- RUN ON EVERY ROUTE CHANGE ----
+          // Run on route changes AFTER Angular finishes rendering
           router.events.subscribe(event => {
             if (event instanceof NavigationEnd) {
-              setTimeout(() => {
-                console.log("SPA Route Change Trigger:", event.url);
-                (window as any).VisioptSPA?.run();
-              }, 50); // matches the internal Visiopt delay
+              appRef.isStable.subscribe(stable => {
+                if (stable) {
+                  setTimeout(() => {
+                    console.log("SPA Route Change - DOM Ready:", event.url);
+                    (window as any).VisioptSPA?.run();
+                  }, 100);
+                }
+              });
             }
           });
 
         };
       },
-      deps: [Router],
+      deps: [Router, ApplicationRef],
       multi: true
     }
-
   ]
 };
