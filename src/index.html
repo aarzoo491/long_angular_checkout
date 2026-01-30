@@ -13,6 +13,7 @@
     <script async type="text/javascript">
         window.visiopt_code = window.visiopt_code ||
             (function () {
+              console.log("VISIOPT: Start Smartcode");
                 var visi_wid = 1040;
                 var visi_flicker_time = 4000;
                 var visi_flicker_element = "html";
@@ -21,6 +22,7 @@
                 var lastPath = location.pathname;
                 var visi_fn = {
                     begin: function () {
+                      console.log("VISIOPT: begin start");
                         if (d.getElementById("visi_flicker")) return;
                         var css = visi_flicker_element + "{opacity:0.5!important;background:none!important;}";
                         var st = d.createElement("style");
@@ -29,6 +31,7 @@
                         if (st.styleSheet) st.styleSheet.cssText = css;
                         else st.appendChild(d.createTextNode(css));
                         d.head.appendChild(st);
+                      console.log("VISIOPT: begin end");
                     },
                     complete: function () {
                         c = true;
@@ -39,7 +42,9 @@
                         return c;
                     },
                     pack: function (src) {
+                      console.log("VISIOPT: pack start");
                         waitForAppHome(function () {
+                          console.log("VISIOPT: found app home and load js file");
                             if (window.__visi_vt_loaded__) {
                                 runVisiForCurrentPage();
                                 return;
@@ -56,6 +61,7 @@
                         });
                     },
                     init: function () {
+                      console.log("VISIOPT: smartcode init");
                         visi_fn.begin();
                         setTimeout(function () {
                             visi_fn.complete();
@@ -69,6 +75,7 @@
                 function waitForAppHome(done) {
                     let tries = 0;
                     function check() {
+                      console.log("try to find app-root");
                         tries++;
                         if (document.querySelector("app-root")) {
                             requestAnimationFrame(() => {
