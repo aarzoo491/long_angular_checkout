@@ -14,7 +14,7 @@
         window.visiopt_code = window.visiopt_code ||
             (function () {
                 var visi_wid = 1040;
-                var visi_flicker_time = 1000;
+                var visi_flicker_time = 4000;
                 var visi_flicker_element = "html";
                 var d = document;
                 var c = false;
@@ -39,21 +39,34 @@
                         return c;
                     },
                     pack: function (src) {
-                        waitForAppHome(function () {
-                            if (window.__visi_vt_loaded__) {
-                                runVisiForCurrentPage();
-                                return;
-                            }
-                            window.__visi_vt_loaded__ = true;
-                            var s = d.createElement("script");
-                            s.src = src;
-                            s.type = "text/javascript";
-                            s.async = true;
-                            s.onerror = function () {
-                                visi_fn.complete();
-                            };
-                            d.head.appendChild(s);
-                        });
+                        // waitForAppHome(function () {
+                        //     if (window.__visi_vt_loaded__) {
+                        //         runVisiForCurrentPage();
+                        //         return;
+                        //     }
+                        //     window.__visi_vt_loaded__ = true;
+                        //     var s = d.createElement("script");
+                        //     s.src = src;
+                        //     s.type = "text/javascript";
+                        //     s.async = true;
+                        //     s.onerror = function () {
+                        //         visi_fn.complete();
+                        //     };
+                        //     d.head.appendChild(s);
+                        // });
+                          if (window.__visi_vt_loaded__) {
+                              runVisiForCurrentPage();
+                              return;
+                          }
+                          window.__visi_vt_loaded__ = true;
+                          var s = d.createElement("script");
+                          s.src = src;
+                          s.type = "text/javascript";
+                          s.async = true;
+                          s.onerror = function () {
+                              visi_fn.complete();
+                          };
+                          d.head.appendChild(s);
                     },
                     init: function () {
                         visi_fn.begin();
@@ -70,7 +83,7 @@
                     let tries = 0;
                     function check() {
                         tries++;
-                        if (document.querySelector("app-home")) {
+                        if (document.querySelector("app-root")) {
                             requestAnimationFrame(() => {
                                 requestAnimationFrame(() => {
                                     done();
@@ -84,13 +97,6 @@
                         done();
                     }
                     check();
-                }
-                function waitForRoot() {
-                    var t = setInterval(function () {
-                        if (document.querySelector("app-root")) {
-                            clearInterval(t);
-                        }
-                    }, 40);
                 }
                 function watchUrlChanges(callback) {
                     setInterval(function () {
@@ -128,7 +134,6 @@
                     // });
                     window.VisiBoot();
                 }
-                waitForRoot();
                 watchUrlChanges(function () {
                     runVisiForCurrentPage();
                 });
