@@ -48,7 +48,7 @@ export class TrackingComponent implements OnInit {
 
     const style = document.createElement('style');
     style.id = 'visi_flicker';
-    style.textContent = `${selector}{opacity:0!important;background:none!important;}`;
+    style.textContent = `${selector}{opacity:0.5!important;background:none!important;}`;
 
     document.head.appendChild(style);
   }
