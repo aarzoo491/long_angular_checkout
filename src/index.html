@@ -51,6 +51,12 @@
                         c = true;
                         var f = d.getElementById("visi_flicker");
                         if (f) f.remove();
+
+                        console.log("START Remove pre-hide");
+                        var ph = document.getElementById("visi-prehide");
+                        if (ph) ph.remove();
+                        console.log("END Remove pre-hide");
+                      
                     },
                     completed: function () {
                         return c;
