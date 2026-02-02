@@ -14,18 +14,18 @@
         window.visiopt_code = window.visiopt_code ||
             (function () {
 
-              console.log("START IMMEDIATE pre-hide (runs before first paint)");
-                var d = document;
-                if (!d.getElementById("visi-prehide")) {
-                    var st = d.createElement("style");
-                    st.id = "visi-prehide";
-                    st.type = "text/css";
-                    st.appendChild(
-                      d.createTextNode("html{opacity:0!important;}")
-                    );
-                    d.documentElement.appendChild(st);
-                }
-                console.log("END IMMEDIATE pre-hide (runs before first paint)");
+              // console.log("START IMMEDIATE pre-hide (runs before first paint)");
+              //  var d = document;
+              //  if (!d.getElementById("visi-prehide")) {
+              //      var st = d.createElement("style");
+              //      st.id = "visi-prehide";
+              //      st.type = "text/css";
+              //      st.appendChild(
+              //        d.createTextNode("html{opacity:0!important;}")
+              //      );
+              //      d.documentElement.appendChild(st);
+              //  }
+              //  console.log("END IMMEDIATE pre-hide (runs before first paint)");
               
               console.log("VISIOPT: Start Smartcode");
                 var visi_wid = 1040;
