@@ -13,20 +13,6 @@
     <script async type="text/javascript">
         window.visiopt_code = window.visiopt_code ||
             (function () {
-
-               console.log("START IMMEDIATE pre-hide (runs before first paint)");
-                var d = document;
-                if (!d.getElementById("visi-prehide")) {
-                    var st = d.createElement("style");
-                    st.id = "visi-prehide";
-                    st.type = "text/css";
-                    st.appendChild(
-                      d.createTextNode("html{opacity:0!important;}")
-                    );
-                    d.documentElement.appendChild(st);
-                }
-                console.log("END IMMEDIATE pre-hide (runs before first paint)");
-              
               console.log("VISIOPT: Start Smartcode");
                 var visi_wid = 1040;
                 var visi_flicker_time = 4000;
@@ -44,19 +30,15 @@
                         st.type = "text/css";
                         if (st.styleSheet) st.styleSheet.cssText = css;
                         else st.appendChild(d.createTextNode(css));
-                        // d.head.appendChild(st);
+                        d.head.appendChild(st);
                       console.log("VISIOPT: begin end");
                     },
                     complete: function () {
+                        console.log("START visi_flicker Remove");
                         c = true;
                         var f = d.getElementById("visi_flicker");
-                        // if (f) f.remove();
-
-                        console.log("START Remove pre-hide");
-                        var ph = document.getElementById("visi-prehide");
-                        if (ph) ph.remove();
-                        console.log("END Remove pre-hide");
-                      
+                        if (f) f.remove();
+                        console.log("END visi_flicker Remove");
                     },
                     completed: function () {
                         return c;
