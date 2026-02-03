@@ -24,7 +24,7 @@
                     begin: function () {
                       console.log("VISIOPT: begin start");
                         if (d.getElementById("visi_flicker")) return;
-                        var css = visi_flicker_element + "{opacity:0.5!important;background:none!important;}";
+                        var css = visi_flicker_element + "{opacity:0!important;background:none!important;}";
                         var st = d.createElement("style");
                         st.id = "visi_flicker";
                         st.type = "text/css";
@@ -71,7 +71,7 @@
                             visi_fn.complete();
                         }, visi_flicker_time);
 
-                        visi_fn.pack("https://optimize.visioptdev.com/vt." + visi_wid + "_2.js?v=bbbbb");
+                        visi_fn.pack("https://optimize.visioptdev.com/vt." + visi_wid + "_2.js?v=ccccc");
                         return true;
                     }
                 };
