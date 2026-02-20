@@ -96,16 +96,21 @@
                     }
                     check();
                 }
-                function watchUrlChanges(callback) {
-                    setInterval(function () {
-                        var current = location.pathname;
-                        if (current !== lastPath) {
-                            lastPath = current;
-                            console.log("[VISI] Route changed →", current);
-                            callback();
-                        }
-                    }, 60);
-                }
+                function setupRouteListeners(callback) {
+                  window.addEventListener("popstate", function () {
+                      callback();
+                  });
+                  var origPushState = history.pushState;
+                  history.pushState = function () {
+                      origPushState.apply(this, arguments);
+                      callback();
+                  };
+                  var origReplaceState = history.replaceState;
+                  history.replaceState = function () {
+                      origReplaceState.apply(this, arguments);
+                      callback();
+                  };
+              }
                 function runVisiForCurrentPage() {
                     if (typeof VisiPageMatcher === "undefined") {
                         console.warn("VisiPageMatcher not loaded yet");
@@ -132,8 +137,12 @@
                     // });
                     window.VisiBoot();
                 }
-                watchUrlChanges(function () {
-                    runVisiForCurrentPage();
+                setupRouteListeners(function () {
+                    if (location.pathname !== lastPath) {
+                        lastPath = location.pathname;
+                        console.log("[VISI] SPA Route changed →", lastPath);
+                        runVisiForCurrentPage();
+                    }
                 });
                 return visi_fn;
             })();
